@@ -9,9 +9,9 @@ pipeline {
         stage ('Install dependencies') {
             steps {
                 bat'''
-                python -m venv venv
-                call venv\\Scripts\\activate
-                python -m pip install --upgrade pip
+                "C:\\Users\\gowth\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m venv venv
+                call .\\venv\\Scripts\\activate
+                "C:\\Users\\gowth\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m pip install --upgrade pip
                 pip install pytest
                 '''
             }
@@ -20,8 +20,8 @@ pipeline {
         stage ('Test'){
             steps {
                 bat'''
-                    call venv\\Scripts\\activate
-                    python test.py
+                    call .\\venv\\Scripts\\activate
+                    "C:\\Users\\gowth\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" test.py
                     '''
             }
         }

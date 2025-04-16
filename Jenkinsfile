@@ -1,13 +1,12 @@
 pipeline {
     agent any
-    stages ('Checkout out') {
-        stage {
+    stages {
+        stage ('Checkout code'){
             steps {
                 git url:"https://github.com/gowtham123K/Test_repo.git",branch:"main"
             }
         }
-    stages ('Install dependencies') {
-        stage {
+        stage ('Install dependencies') {
             steps {
                 bat'''
                 python -m venv venv
@@ -17,16 +16,14 @@ pipeline {
                 '''
             }
         }
-    }
-    stages ('Test') {
-        steps {
-            bat'''
-                call venv\\Scripts\\activate
-                python test.py
-                '''
+ 
+        stage ('Test'){
+            steps {
+                bat'''
+                    call venv\\Scripts\\activate
+                    python test.py
+                    '''
+            }
         }
-    }
-
-    
     }
 }
